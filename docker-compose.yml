@@ -1,0 +1,57 @@
+services:
+  wordpress:
+    image: wordpress:php8.4-apache
+    ports:
+      - "8009:80"
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wpuser
+      WORDPRESS_DB_PASSWORD: wppass
+      WORDPRESS_DB_NAME: carpathiansdb
+    entrypoint: >
+      sh -c "echo 'Waiting for MySQL to be ready...' &&
+              sleep 10 &&
+              curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar &&
+              chmod +x wp-cli.phar &&
+              mv wp-cli.phar /usr/local/bin/wp &&
+              docker-entrypoint.sh apache2-foreground"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    restart: always
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:80"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  db:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: carpathiansdb
+      MYSQL_USER: wpuser
+      MYSQL_PASSWORD: wppass
+      MYSQL_ROOT_PASSWORD: rootpass
+    volumes:
+      - db_data_carpathians:/var/lib/mysql
+    ports:
+      - "3314:3306"
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p$$MYSQL_ROOT_PASSWORD"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8089:8080"
+    depends_on:
+      - db
+
+volumes:
+  db_data_carpathians:

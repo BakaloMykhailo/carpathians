@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+    --breakpoint-sm: 390px;
+    --breakpoint-md: 680px;
+    --breakpoint-lg: 1200px;
+
+    --font-firs-neue: 'TT Firs Neue', sans-serif;
+    --font-tactic-sans: 'Tactic Sans', sans-serif;
+    --font-tektur: 'Tektur', sans-serif;
+}
+
+@font-face {
+    font-family: 'TT Firs Neue';
+    src: url('../fonts/TTFirsNeue/TtFirsNeueBold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'TT Firs Neue';
+    src: url('../fonts/TTFirsNeue/TtFirsNeueDemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tactic Sans';
+    src: url('../fonts/TacticSans/TacticSansMedium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('../fonts/Tektur/TekturRegular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tektur';
+    src: url('../fonts/Tektur/TekturSemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}

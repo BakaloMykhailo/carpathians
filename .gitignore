@@ -35,11 +35,19 @@ wp-config.php
 # htaccess
 /.htaccess
 
-# All plugins
-#
-# Note: If you wish to whitelist plugins,
-# uncomment the next line
-#/wp-content/plugins
+# Composer
+/vendor/
+/auth.json
+
+# Node
+node_modules/
+
+# macOS
+.DS_Store
+
+# All plugins (managed via Composer)
+/wp-content/plugins/*
+!/wp-content/plugins/index.php
 
 # All themes
 #
