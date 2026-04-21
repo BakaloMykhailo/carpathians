@@ -27,7 +27,7 @@ composer install
 
 This installs ACF Pro and Safe SVG into `wp-content/plugins/`.
 
-> **Note:** `auth.json` with your ACF Pro license key must be present in the project root. It is gitignored — get it from the team.
+> **Note:** `auth.json` is committed to this repository intentionally. It contains the ACF Pro license key required for Composer to install the plugin.
 
 ### 3. Install Node dependencies
 
