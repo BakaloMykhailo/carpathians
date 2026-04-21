@@ -36,5 +36,6 @@ export default defineConfig({
         hmr: {
             host: 'localhost',
         },
+        origin: 'http://localhost:3000',
     },
 })

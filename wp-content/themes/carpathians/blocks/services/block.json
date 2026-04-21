@@ -1,0 +1,12 @@
+{
+    "name": "carpathians/services",
+    "title": "Services",
+    "description": "Services section",
+    "category": "carpathians",
+    "icon": "list-view",
+    "keywords": ["services"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "services.php"
+    }
+}

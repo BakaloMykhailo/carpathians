@@ -8,11 +8,21 @@
     --font-firs-neue: 'TT Firs Neue', sans-serif;
     --font-tactic-sans: 'Tactic Sans', sans-serif;
     --font-tektur: 'Tektur', sans-serif;
+
+    --text-2\.5xl: 1.75rem;
+}
+
+@utility mobile-active {
+    display: flex;
+}
+
+@utility hover-color {
+    background-color: var(--hover-color);
 }
 
 @font-face {
     font-family: 'TT Firs Neue';
-    src: url('../fonts/TTFirsNeue/TtFirsNeueBold.ttf') format('truetype');
+    src: url('./fonts/TTFirsNeue/TtFirsNeueBold.ttf') format('truetype');
     font-weight: 700;
     font-style: normal;
     font-display: swap;
@@ -20,7 +30,7 @@
 
 @font-face {
     font-family: 'TT Firs Neue';
-    src: url('../fonts/TTFirsNeue/TtFirsNeueDemiBold.ttf') format('truetype');
+    src: url('./fonts/TTFirsNeue/TtFirsNeueDemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;
@@ -28,15 +38,23 @@
 
 @font-face {
     font-family: 'Tactic Sans';
-    src: url('../fonts/TacticSans/TacticSansMedium.otf') format('opentype');
+    src: url('./fonts/TacticSans/TacticSansExtendedMedium.otf') format('opentype');
     font-weight: 500;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
+    font-family: 'Tactic Sans';
+    src: url('./fonts/TacticSans/TacticSansExtendedBold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
     font-family: 'Tektur';
-    src: url('../fonts/Tektur/TekturRegular.ttf') format('truetype');
+    src: url('./fonts/Tektur/TekturRegular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -44,7 +62,7 @@
 
 @font-face {
     font-family: 'Tektur';
-    src: url('../fonts/Tektur/TekturSemiBold.ttf') format('truetype');
+    src: url('./fonts/Tektur/TekturSemiBold.ttf') format('truetype');
     font-weight: 600;
     font-style: normal;
     font-display: swap;

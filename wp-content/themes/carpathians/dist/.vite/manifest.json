@@ -1,0 +1,43 @@
+{
+  "src/fonts/TTFirsNeue/TtFirsNeueBold.ttf": {
+    "file": "assets/TtFirsNeueBold-CZuksPqW.ttf",
+    "src": "src/fonts/TTFirsNeue/TtFirsNeueBold.ttf"
+  },
+  "src/fonts/TTFirsNeue/TtFirsNeueDemiBold.ttf": {
+    "file": "assets/TtFirsNeueDemiBold-BOFLfcRG.ttf",
+    "src": "src/fonts/TTFirsNeue/TtFirsNeueDemiBold.ttf"
+  },
+  "src/fonts/TacticSans/TacticSansExtendedBold.otf": {
+    "file": "assets/TacticSansExtendedBold-B6HwruNM.otf",
+    "src": "src/fonts/TacticSans/TacticSansExtendedBold.otf"
+  },
+  "src/fonts/TacticSans/TacticSansExtendedMedium.otf": {
+    "file": "assets/TacticSansExtendedMedium-gf5fHX_-.otf",
+    "src": "src/fonts/TacticSans/TacticSansExtendedMedium.otf"
+  },
+  "src/fonts/Tektur/TekturRegular.ttf": {
+    "file": "assets/TekturRegular-BxyV1Bj7.ttf",
+    "src": "src/fonts/Tektur/TekturRegular.ttf"
+  },
+  "src/fonts/Tektur/TekturSemiBold.ttf": {
+    "file": "assets/TekturSemiBold-CtURg5Jz.ttf",
+    "src": "src/fonts/Tektur/TekturSemiBold.ttf"
+  },
+  "src/main.js": {
+    "file": "assets/main-CNaCFitY.js",
+    "name": "main",
+    "src": "src/main.js",
+    "isEntry": true,
+    "css": [
+      "assets/main-C9XfhIOJ.css"
+    ],
+    "assets": [
+      "assets/TtFirsNeueBold-CZuksPqW.ttf",
+      "assets/TtFirsNeueDemiBold-BOFLfcRG.ttf",
+      "assets/TacticSansExtendedMedium-gf5fHX_-.otf",
+      "assets/TacticSansExtendedBold-B6HwruNM.otf",
+      "assets/TekturRegular-BxyV1Bj7.ttf",
+      "assets/TekturSemiBold-CtURg5Jz.ttf"
+    ]
+  }
+}

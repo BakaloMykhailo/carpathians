@@ -1,0 +1,12 @@
+{
+    "name": "carpathians/faq",
+    "title": "FAQ",
+    "description": "FAQ section",
+    "category": "carpathians",
+    "icon": "editor-help",
+    "keywords": ["faq"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "faq.php"
+    }
+}

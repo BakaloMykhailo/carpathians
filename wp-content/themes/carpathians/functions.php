@@ -1,24 +1,46 @@
 <?php
+require_once get_template_directory() . '/inc/vite.php';
 require_once get_template_directory() . '/inc/acf-fields.php';
-
-function carpathians_enqueue_assets() {
-    $dist = get_template_directory() . '/dist';
-    $manifest_path = $dist . '/.vite/manifest.json';
-
-    if ( is_file( $manifest_path ) ) {
-        $manifest = json_decode( file_get_contents( $manifest_path ), true );
-        $entry = $manifest['src/main.js'] ?? null;
-
-        if ( $entry ) {
-            $base = get_template_directory_uri() . '/dist/';
-            wp_enqueue_style( 'carpathians-style', $base . $entry['css'][0], [], null );
-            wp_enqueue_script( 'carpathians-main', $base . $entry['file'], [], null, true );
-        }
-    }
-}
-add_action( 'wp_enqueue_scripts', 'carpathians_enqueue_assets' );
+require_once get_template_directory() . '/inc/cpt.php';
 
 add_theme_support( 'custom-logo' );
+add_theme_support( 'post-thumbnails' );
+
+add_filter( 'block_categories_all', function( $categories ) {
+    return array_merge( [
+        [
+            'slug'  => 'carpathians',
+            'title' => 'Carpathians',
+        ],
+    ], $categories );
+} );
+
+add_action( 'acf/init', function() {
+    if ( function_exists( 'acf_register_block_type' ) ) {
+        $blocks = glob( get_template_directory() . '/blocks/*/block.json' );
+        foreach ( $blocks as $block_json ) {
+            $config = json_decode( file_get_contents( $block_json ), true );
+            $dir    = dirname( $block_json );
+
+            if ( ! empty( $config['acf']['renderTemplate'] ) ) {
+                $config['render_template'] = $dir . '/' . basename( $config['acf']['renderTemplate'] );
+            }
+
+            if ( ! empty( $config['acf']['mode'] ) ) {
+                $config['mode'] = $config['acf']['mode'];
+            }
+
+            acf_register_block_type( $config );
+        }
+    }
+}, 5 );
+
+add_filter( 'upload_mimes', function( $mimes ) {
+    $mimes['svg']  = 'image/svg+xml';
+    $mimes['svgz'] = 'image/svg+xml';
+    return $mimes;
+} );
+
 
 if ( function_exists( 'acf_add_options_page' ) ) {
     acf_add_options_page( [

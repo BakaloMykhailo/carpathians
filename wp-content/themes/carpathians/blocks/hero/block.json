@@ -1,0 +1,12 @@
+{
+    "name": "carpathians/hero",
+    "title": "Hero",
+    "description": "Hero section",
+    "category": "carpathians",
+    "icon": "cover-image",
+    "keywords": ["hero"],
+    "acf": {
+        "mode": "edit",
+        "renderTemplate": "hero.php"
+    }
+}
