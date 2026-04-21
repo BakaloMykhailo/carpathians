@@ -5,6 +5,11 @@ require_once get_template_directory() . '/inc/cpt.php';
 
 add_theme_support( 'custom-logo' );
 add_theme_support( 'post-thumbnails' );
+add_theme_support( 'menus' );
+
+register_nav_menus( [
+    'main' => __( 'Main Navigation', 'carpathians' ),
+] );
 
 add_filter( 'block_categories_all', function( $categories ) {
     return array_merge( [
@@ -34,6 +39,33 @@ add_action( 'acf/init', function() {
         }
     }
 }, 5 );
+
+add_action( 'wp_head', function() {
+    $logo_id = get_theme_mod( 'custom_logo' );
+    if ( $logo_id ) {
+        $logo_url = wp_get_attachment_image_url( $logo_id, 'full' );
+        if ( $logo_url ) {
+            echo '<link rel="preload" as="image" href="' . esc_url( $logo_url ) . '" fetchpriority="high">' . "\n";
+        }
+    }
+
+    $post = get_post();
+    if ( ! $post ) return;
+
+    $blocks = parse_blocks( $post->post_content );
+    foreach ( $blocks as $block ) {
+        if ( $block['blockName'] === 'acf/carpathians-hero' ) {
+            $image_id = $block['attrs']['data']['image'] ?? null;
+            if ( $image_id ) {
+                $url = wp_get_attachment_image_url( $image_id, 'full' );
+                if ( $url ) {
+                    echo '<link rel="preload" as="image" href="' . esc_url( $url ) . '" fetchpriority="high">' . "\n";
+                }
+            }
+            break;
+        }
+    }
+}, 1 );
 
 add_filter( 'upload_mimes', function( $mimes ) {
     $mimes['svg']  = 'image/svg+xml';

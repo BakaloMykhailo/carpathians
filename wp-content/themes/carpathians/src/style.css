@@ -3,15 +3,22 @@
 @theme {
     --breakpoint-sm: 390px;
     --breakpoint-md: 680px;
-    --breakpoint-lg: 1200px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xlg: 1200px;
+    --breakpoint-xl: 1600px;
 
     --font-firs-neue: 'TT Firs Neue', sans-serif;
     --font-tactic-sans: 'Tactic Sans', sans-serif;
     --font-tektur: 'Tektur', sans-serif;
 
     --text-2\.5xl: 1.75rem;
+    --text-65: 4.0625rem;
+    --text-80: 5rem;
+    --text-100: 6.25rem;
+    --text-8\.5xl: 7.5rem;
 
     --color-gray: #333333;
+    --color-red: #DD3030;
 }
 
 @utility mobile-active {
@@ -34,6 +41,14 @@
     font-family: 'TT Firs Neue';
     src: url('./fonts/TTFirsNeue/TtFirsNeueDemiBold.ttf') format('truetype');
     font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Tactic Sans';
+    src: url('./fonts/TacticSans/TacticSansExtendedRegular.otf') format('opentype');
+    font-weight: 400;
     font-style: normal;
     font-display: swap;
 }

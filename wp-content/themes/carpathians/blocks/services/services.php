@@ -1,16 +1,15 @@
 <?php
     $heading  = get_field( 'heading' );
-    $services = (array) get_field( 'services' );
+    $services = get_field( 'services' );
 ?>
 
-<section class="bg-black text-white tracking-tight">
+<section class="bg-black text-white">
     <?php if ( $heading ) : ?>
-        <h2 class="text-2.5xl font-tactic-sans font-bold uppercase px-10 py-7.5 leading-5"><?php echo esc_html( $heading ); ?></h2>
+        <h2 class="text-2.5xl font-tactic-sans font-bold uppercase px-6 lg:px-10 py-6 lg:py-7.5 leading-5 tracking-tight"><?php echo esc_html( $heading ); ?></h2>
     <?php endif; ?>
 
     <?php if ( $services ) : ?>
 
-        <?php /* Mobile */ ?>
         <div class="md:hidden">
             <div class="flex flex-nowrap" data-tabs>
                 <?php foreach ( $services as $index => $service ) : ?>
@@ -28,10 +27,10 @@
                     >
                         <div class="max-h-12 max-w-12 relative">
                             <?php if ( $thumbnail ) : ?>
-                                <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="object-cover w-full h-full transition-opacity duration-300<?php echo $index === 0 ? ' opacity-0' : ''; ?>" data-default-img>
+                                <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy" decoding="async" class="object-cover w-full h-full transition-opacity duration-300<?php echo $index === 0 ? ' opacity-0' : ''; ?>" data-default-img>
                             <?php endif; ?>
                             <?php if ( $hover_image ) : ?>
-                                <img src="<?php echo esc_url( $hover_image['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="object-cover w-full h-full absolute inset-0 transition-opacity duration-300<?php echo $index === 0 ? '' : ' opacity-0'; ?>" data-hover-img>
+                                <img src="<?php echo esc_url( $hover_image['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy" decoding="async" class="object-cover w-full h-full absolute inset-0 transition-opacity duration-300<?php echo $index === 0 ? '' : ' opacity-0'; ?>" data-hover-img>
                             <?php endif; ?>
                         </div>
                     </div>
@@ -48,24 +47,26 @@
                         $hover_image = get_field( 'hover_image', $service->ID );
                     ?>
                     <div
-                        class="p-10 min-h-97.5 <?php echo $index === 0 ? 'flex' : 'hidden'; ?> items-center justify-center"
+                        class="p-10 min-h-97.5 <?php echo $index === 0 ? 'flex' : 'hidden'; ?> flex-col items-center justify-center gap-6"
                         style="--hover-color: <?php echo esc_attr( $color ?: '#000' ); ?>; <?php echo $index === 0 ? 'background-color: ' . esc_attr( $color ?: '#000' ) . ';' : ''; ?>"
                         data-tab-panel="<?php echo $index; ?>"
                     >
                         <div class="relative max-h-40 max-w-40">
                             <?php if ( $thumbnail ) : ?>
-                                <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="object-cover w-full h-full transition-opacity duration-300<?php echo $index === 0 ? ' opacity-0' : ''; ?>" data-default-img>
+                                <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy" decoding="async" class="object-cover w-full h-full transition-opacity duration-300<?php echo $index === 0 ? ' opacity-0' : ''; ?>" data-default-img>
                             <?php endif; ?>
                             <?php if ( $hover_image ) : ?>
-                                <img src="<?php echo esc_url( $hover_image['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="object-cover w-full h-full absolute inset-0 transition-opacity duration-300<?php echo $index === 0 ? '' : ' opacity-0'; ?>" data-hover-img>
+                                <img src="<?php echo esc_url( $hover_image['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy" decoding="async" class="object-cover w-full h-full absolute inset-0 transition-opacity duration-300<?php echo $index === 0 ? '' : ' opacity-0'; ?>" data-hover-img>
                             <?php endif; ?>
                         </div>
+                        <?php if ( $description ) : ?>
+                            <p class="text-lg uppercase leading-tight font-firs-neue font-semibold text-center max-w-80"><?php echo esc_html( $description ); ?></p>
+                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>
         </div>
 
-        <?php /* Desktop */ ?>
         <div class="hidden md:flex flex-nowrap border-gray border-t border-b">
             <?php foreach ( $services as $service ) : ?>
                 <?php
@@ -76,19 +77,21 @@
                     $hover_image = get_field( 'hover_image', $service->ID );
                 ?>
                 <div
-                    class="group border-r border-r-gray last:border-r-0 p-10 basis-0 grow min-h-151 lg:min-h-188.5 flex items-center justify-center transition-all duration-300 hover:hover-color hover:basis-1/5 cursor-pointer"
+                    class="relative group border-r border-r-gray last:border-r-0 p-10 basis-0 grow min-h-151 xlg:min-h-188.5 flex flex-col items-center justify-center transition-all duration-300 hover:hover-color hover:basis-1/5 cursor-pointer"
                     style="--hover-color: <?php echo esc_attr( $color ?: '#000' ); ?>;"
                 >
-                    <div class="relative max-h-40 max-w-40 aspect-square">
-                        <?php if ( $thumbnail ) : ?>
-                            <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="object-cover w-full h-full transition-opacity duration-300 group-hover:opacity-0">
-                        <?php endif; ?>
-                        <?php if ( $hover_image ) : ?>
-                            <img src="<?php echo esc_url( $hover_image['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="object-cover w-full h-full absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <?php endif; ?>
-                    </div>
-                    <div class="opacity-0 absolute text-center">
-                        <p class="text-sm"><?php echo esc_html( $description ); ?></p>
+                    <div class="relative w-full flex flex-col items-center justify-center top-0 group-hover:-top-10 transform-all duration-300">
+                        <div class="relative max-h-40 max-w-40 aspect-square">
+                            <?php if ( $thumbnail ) : ?>
+                                <img src="<?php echo esc_url( $thumbnail ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy" decoding="async" class="object-cover w-full h-full transition-opacity duration-300 group-hover:opacity-0">
+                            <?php endif; ?>
+                            <?php if ( $hover_image ) : ?>
+                                <img src="<?php echo esc_url( $hover_image['url'] ); ?>" alt="<?php echo esc_attr( $title ); ?>" loading="lazy" decoding="async" class="object-cover w-full h-full absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                            <?php endif; ?>
+                        </div>
+                        <div class="trasition-all opacity-0 absolute group-hover:opacity-100 text-center max-w-80 top-full pt-4">
+                            <p class="text-lg uppercase leading-tight font-firs-neue font-semibold"><?php echo esc_html( $description ); ?></p>
+                        </div>
                     </div>
                 </div>
             <?php endforeach; ?>

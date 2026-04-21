@@ -5,6 +5,29 @@ if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 }
 
 acf_add_local_field_group( [
+    'key'    => 'group_theme_options_general',
+    'title'  => 'General',
+    'fields' => [
+        [
+            'key'      => 'field_theme_slogan',
+            'label'    => 'Slogan',
+            'name'     => 'slogan',
+            'type'     => 'text',
+            'required' => 0,
+        ],
+    ],
+    'location' => [
+        [
+            [
+                'param'    => 'options_page',
+                'operator' => '==',
+                'value'    => 'theme-options',
+            ],
+        ],
+    ],
+] );
+
+acf_add_local_field_group( [
     'key'      => 'group_theme_options_socials',
     'title'    => 'Socials',
     'fields'   => [

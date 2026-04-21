@@ -38,6 +38,16 @@ acf_add_local_field_group( [
             'type'     => 'text',
             'required' => 0,
         ],
+        [
+            'key'          => 'field_faq_items',
+            'label'        => 'FAQ Items',
+            'name'         => 'faq_items',
+            'type'         => 'post_object',
+            'post_type'    => ['faq'],
+            'multiple'     => 1,
+            'return_format' => 'object',
+            'required'     => 0,
+        ],
     ],
     'location' => [
         [

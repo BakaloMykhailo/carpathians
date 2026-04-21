@@ -1,6 +1,6 @@
 </main>
 
-<footer>
+<footer class="p-10 bg-black">
 
 </footer>
 

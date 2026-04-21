@@ -38,9 +38,31 @@ document.addEventListener( 'DOMContentLoaded', () => {
         } );
     }
 
+    function initFaq() {
+        document.querySelectorAll( '.faq-item' ).forEach( item => {
+            const toggle = item.querySelector( '.faq-toggle' );
+            const answer = item.querySelector( '.faq-answer' );
+            if ( !toggle || !answer ) return;
+
+            toggle.addEventListener( 'click', () => {
+                const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+                answer.style.maxHeight = isOpen ? '0px' : answer.scrollHeight + 'px';
+                toggle.querySelector( '.plus-icon' ).classList.toggle( 'hidden', !isOpen );
+                toggle.querySelector( '.minus-icon' ).classList.toggle( 'hidden', isOpen );
+            } );
+        } );
+    }
+
+    const mqFaq = window.matchMedia( '(min-width: 1024px)' );
+
     if ( !mq.matches ) initTabs();
+    if ( !mqFaq.matches ) initFaq();
 
     mq.addEventListener( 'change', e => {
         if ( !e.matches ) initTabs();
+    } );
+
+    mqFaq.addEventListener( 'change', e => {
+        if ( !e.matches ) initFaq();
     } );
 } );
